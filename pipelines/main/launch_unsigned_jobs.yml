@@ -12,7 +12,6 @@
 # and only need to touch the webui configuration when we need to alter
 # something about the privileged steps.
 
-# TODO Test stmt
 common:
   - diff-filter-build_plugin: &diff-filter-build
       https://github.com/fatteneder/diff-filter-buildkite-plugin#main:
@@ -128,10 +127,7 @@ steps:
           - *pr-labels
         commands: |
           export ALLOW_FAIL="false"
-          echo "HELLO"
-          echo "$${PULL_REQUEST_LABELS}"
-          echo "${FORCE}"
-          echo "WORLD"
+          exit -1
           FORCE=$(test -n "$(echo $${PULL_REQUEST_LABELS} | grep "\\<ci-force-build\\>")" && echo 1 || echo 0)
           BUILD=$(($${BUILDKITE_PLUGIN_DIFF_FILTER_TRIGGERED_BUILD} || ${FORCE}))
           if [[ ${BUILD} == 1 ]]; then
