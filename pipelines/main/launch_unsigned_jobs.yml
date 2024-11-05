@@ -47,11 +47,11 @@ steps:
           - *pr-labels
         commands: |
           # Launch Linux build jobs
-          FORCE=$(test -n "$(echo $${PULL_REQUEST_LABELS} | grep "\\<ci-force-build\\>")" && echo 1 || echo 0)
           echo "HELLO"
           echo "$${PULL_REQUEST_LABELS}"
           echo "${FORCE}"
           echo "WORLD"
+          FORCE=$(test -n "$(echo $${PULL_REQUEST_LABELS} | grep "\\<ci-force-build\\>")" && echo 1 || echo 0)
           BUILD=$(($${BUILDKITE_PLUGIN_DIFF_FILTER_TRIGGERED_BUILD} || ${FORCE}))
           GROUP="Build" \
               ALLOW_FAIL="false" \
@@ -96,11 +96,11 @@ steps:
         commands: |
           buildkite-agent pipeline upload .buildkite/pipelines/main/misc/doctest.yml
           buildkite-agent pipeline upload .buildkite/pipelines/main/misc/pdf_docs/build_pdf_docs.yml
-          FORCE=$(test -n "$(echo $${PULL_REQUEST_LABELS} | grep "\\<ci-force-build\\>")" && echo 1 || echo 0)
           echo "HELLO"
           echo "$${PULL_REQUEST_LABELS}"
           echo "${FORCE}"
           echo "WORLD"
+          FORCE=$(test -n "$(echo $${PULL_REQUEST_LABELS} | grep "\\<ci-force-build\\>")" && echo 1 || echo 0)
           BUILD=$(($${BUILDKITE_PLUGIN_DIFF_FILTER_TRIGGERED_BUILD} || ${FORCE}))
           if [[ ${BUILD} == 1 ]]; then
             buildkite-agent pipeline upload .buildkite/pipelines/main/misc/analyzegc.yml
@@ -128,11 +128,11 @@ steps:
           - *pr-labels
         commands: |
           export ALLOW_FAIL="false"
-          FORCE=$(test -n "$(echo $${PULL_REQUEST_LABELS} | grep "\\<ci-force-build\\>")" && echo 1 || echo 0)
           echo "HELLO"
           echo "$${PULL_REQUEST_LABELS}"
           echo "${FORCE}"
           echo "WORLD"
+          FORCE=$(test -n "$(echo $${PULL_REQUEST_LABELS} | grep "\\<ci-force-build\\>")" && echo 1 || echo 0)
           BUILD=$(($${BUILDKITE_PLUGIN_DIFF_FILTER_TRIGGERED_BUILD} || ${FORCE}))
           if [[ ${BUILD} == 1 ]]; then
             buildkite-agent pipeline upload .buildkite/pipelines/main/misc/gcext.yml
@@ -178,11 +178,11 @@ steps:
           - *pr-labels
         commands: |
           export ALLOW_FAIL="true"
-          FORCE=$(test -n "$(echo $${PULL_REQUEST_LABELS} | grep "\\<ci-force-build\\>")" && echo 1 || echo 0)
           echo "HELLO"
           echo "$${PULL_REQUEST_LABELS}"
           echo "${FORCE}"
           echo "WORLD"
+          FORCE=$(test -n "$(echo $${PULL_REQUEST_LABELS} | grep "\\<ci-force-build\\>")" && echo 1 || echo 0)
           BUILD=$(($${BUILDKITE_PLUGIN_DIFF_FILTER_TRIGGERED_BUILD} || ${FORCE}))
           if [[ ${BUILD} == 1 ]]; then
             # Launch Linux allowed-to-fail build jobs
@@ -208,11 +208,11 @@ steps:
           - *pr-labels
         commands: |
           export ALLOW_FAIL="true"
-          FORCE=$(test -n "$(echo $${PULL_REQUEST_LABELS} | grep "\\<ci-force-build\\>")" && echo 1 || echo 0)
           echo "HELLO"
           echo "$${PULL_REQUEST_LABELS}"
           echo "${FORCE}"
           echo "WORLD"
+          FORCE=$(test -n "$(echo $${PULL_REQUEST_LABELS} | grep "\\<ci-force-build\\>")" && echo 1 || echo 0)
           BUILD=$(($${BUILDKITE_PLUGIN_DIFF_FILTER_TRIGGERED_BUILD} || ${FORCE}))
           if [[ ${BUILD} == 1 ]]; then
             # Launch Linux allowed-to-fail test jobs
